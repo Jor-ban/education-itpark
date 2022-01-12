@@ -1,0 +1,62 @@
+<section class="content">
+  <div class="container">
+    <div class="header">
+      <h5>{{ 'directions' | translate }}</h5>
+      <p>{{ 'directionsOfEducation' | translate }}</p>
+      <a [routerLink]="'courses/english'" class="direction">
+        <div class="d-flex align-items-center direction-content">
+          <img src="assets/images/books.png" alt="english icon">
+          <h5>{{ 'english' | translate }}</h5>
+        </div>
+        <div class="d-flex justify-content-center align-items-center btn-part">
+          <a [routerLink]="'courses/english'" class="btn-itpark">{{ 'readmore' | translate }}</a>
+        </div>
+      </a>
+      <!-- <div class="direction">
+        <div class="d-flex align-items-center direction-content">
+          <img src="assets/images/smm.png" alt="english icon">
+          <h5>{{ 'smm' | translate }}</h5>
+        </div>
+        <div class="d-flex justify-content-center align-items-center btn-part">
+          <a [routerLink]="'courses/smm'" class="btn-itpark">{{ 'readmore' | translate }}</a>
+        </div>
+      </div> -->
+      <a [routerLink]="'courses/designVideo'" class="direction">
+        <div class="d-flex align-items-center direction-content">
+          <img src="assets/images/design.png" alt="english icon">
+          <h5>{{ 'designVideo' | translate }}</h5>
+        </div>
+        <div class="d-flex justify-content-center align-items-center btn-part">
+          <a [routerLink]="'courses/designVideo'" class="btn-itpark">{{ 'readmore' | translate }}</a>
+        </div>
+      </a>
+      <a [routerLink]="'courses/computer'" class="direction">
+        <div class="d-flex align-items-center direction-content">
+          <img src="assets/images/compgram.png" alt="english icon">
+          <h5>{{ 'computer' | translate }}</h5>
+        </div>
+        <div class="d-flex justify-content-center align-items-center btn-part">
+          <a [routerLink]="'courses/computer'" class="btn-itpark">{{ 'readmore' | translate }}</a>
+        </div>
+      </a>
+      <a [routerLink]="'courses/robotics'" class="direction">
+        <div class="d-flex align-items-center direction-content">
+          <img src="assets/images/rotech.png" alt="english icon">
+          <h5>{{ 'robotics' | translate }}</h5>
+        </div>
+        <div class="d-flex justify-content-center align-items-center btn-part">
+          <a [routerLink]="'courses/robotics'" class="btn-itpark">{{ 'readmore' | translate }}</a>
+        </div>
+      </a>
+      <a [routerLink]="'courses/programing'" class="direction">
+        <div class="d-flex align-items-center direction-content">
+          <img src="assets/images/programing.png" alt="english icon">
+          <h5>{{ 'programing' | translate }}</h5>
+        </div>
+        <div class="d-flex justify-content-center align-items-center btn-part">
+          <a [routerLink]="'courses/programing'" class="btn-itpark">{{ 'readmore' | translate }}</a>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>

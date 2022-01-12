@@ -1,0 +1,19 @@
+.onprogress {
+  margin-top: -450px;
+  margin-bottom: 100px;
+  text-align: center;
+
+  .container {
+    padding: 20px;
+    background-color: white;
+    border-radius: 20px;
+    color: black;
+
+    h3 {
+      font-weight: 700;
+    }
+    a {
+      max-width: max-content;
+    }
+  }
+}

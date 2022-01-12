@@ -1,1 +1,128 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --itpark: #7DBA28;
+  --itpark-semi: rgba(148, 255, 0, 0.5);
+  --dark: #1E1F25;
+  --light: white;
+  --deep-dark: #141416;
+
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: Gilroy, sans-serif !important;
+  overflow-x: hidden;
+  padding-top: 70px;
+  width: 100vw;
+  background-color: var(--dark);
+  color: var(--light);
+}
+.scroller-up-arrow.hidden {
+  opacity: 0;
+  bottom: -100px;
+}
+.scroller-up-arrow {
+  transition: all 0.3s;
+  z-index: 666;
+  opacity: 1;
+  background-color: var(--dark);
+  cursor: pointer;
+  position: fixed;
+  bottom: 10vw;
+  right: 10vw;
+  border: 2px solid white;
+  padding: 8px 10px 12px 10px;
+  border-radius: 30px;
+  box-shadow: 0 0 0 transparent;
+}
+.scroller-up-arrow:hover {
+  border-color: var(--itpark);
+  box-shadow: 0 0 3px 0 var(--itpark);
+}
+.btn-outline-success {
+  color: white !important;
+  font-weight: bold;
+  border-color: var(--itpark) !important;
+}
+.btn-outline-success:hover,
+.btn-outline-success:focus,
+.btn-outline-success.dropdown-toggle.show,
+.btn-outline-success:active{
+  color: white !important;
+  background-color: var(--itpark) !important;
+}
+.dropdown-menu {
+  border-radius: 12px;
+  padding: 10px;
+}
+.dropdown-item {
+  cursor: pointer;
+  border-radius: 7px;
+}
+.btn-itpark {
+  display: block;
+  transition: all 0.3s ease-in-out;
+  background-color: var(--itpark);
+  border: none;
+  color: rgba(255, 255, 255, 1);
+  border-radius: 20px;
+  font-weight: bold;
+  padding: 5px 25px;
+  text-decoration: none;
+  box-shadow: 0 0 0 transparent;
+}
+.btn-itpark:hover {
+  background-color: var(--itpark);
+  color: white !important;
+  box-shadow: 0 0 0 4px var(--itpark);
+  /*color: white !important;*/
+}
+.btn-outline-itpark {
+  transition: all 0.3s ease-in-out;
+  color: var(--itpark) !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  text-decoration: none !important;
+  border-radius: 20px;
+  padding: 5px 25px;
+  font-weight: bold;
+  border: 2px solid var(--itpark) !important;
+
+  &:hover {
+    color: white !important;
+    background-color: var(--itpark) !important;
+  }
+}
+.text-itpark {
+  color: var(--itpark);
+}
+.nav-link, .hover-a {
+  color: var(--light) !important;
+  margin-left: 12px !important;
+  margin-right: 12px !important;
+
+  &:after {
+    transition: all 0.3s ease-in-out;
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-bottom: -20px;
+    margin-top: 18px;
+    opacity: 0;
+    content: "";
+    background-color: var(--itpark);
+  }
+  &:hover {
+    color: var(--itpark) !important;
+
+    &:after {
+      margin-top: 7px;
+      margin-bottom: -9px;
+      opacity: 1;
+    }
+  }
+}

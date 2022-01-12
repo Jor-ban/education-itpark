@@ -1,0 +1,14 @@
+.course {
+  padding: 20px 10px;
+
+  .skill {
+    display: inline-block;
+    background-color: var(--itpark);
+    color: white;
+    margin: 0 10px 10px 0;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 15px;
+    padding: 5px 10px;
+  }
+}

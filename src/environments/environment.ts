@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  locales: ['uz', 'en', 'ru'],
+  defaultLocale: 'uz',
+  apiUrl: 'https://eduadmin.it-park.uz/api/',
 };
 
 /*

@@ -1,0 +1,40 @@
+<div class="course">
+  <h5 class="text-itpark fw-bold" *ngIf="courseInfo.title">{{ courseInfo.title[currentLang] }}</h5>
+  <div class="d-flex align-items-start">
+    <img src="/assets/icons/info.png" alt="info icon" class="mx-2 mt-1">
+    <p>
+      <span class="fw-bold">{{ 'courseDescription' | translate }}: </span>
+      {{ courseInfo.desc[currentLang] }}
+    </p>
+  </div>
+  <div class="d-flex align-items-start">
+    <img src="/assets/icons/skills.png" alt="skills icon" class="mx-2 mt-1">
+    <p>
+      <span class="fw-bold">{{ 'skills' | translate }}: </span>
+      <span *ngFor="let skill of skills" class="skill">{{ skill }}</span>
+    </p>
+  </div>
+  <div class="d-flex align-items-start">
+    <img src="/assets/icons/duration.png" class="mx-2 mt-1" alt="duration icon">
+    <p>
+      <span class="fw-bold">{{ 'duration' | translate }}: </span>
+      {{ courseInfo.duration[currentLang] }}
+    </p>
+  </div>
+  <div class="d-flex align-items-start">
+    <img src="/assets/icons/price.png" class="mx-2 mt-1" alt="price icon">
+    <p>
+      <span class="fw-bold">{{ 'price' | translate }}: </span>
+      {{ courseInfo.price[currentLang] }}
+    </p>
+  </div>
+  <div class="d-flex align-items-start">
+    <img src="/assets/icons/methods.png" class="mx-2 mt-1" alt="method icon">
+    <p>
+      <span class="fw-bold">{{ 'method' | translate }}: </span>
+      <span class="mx-1" *ngFor="let method of courseInfo.method">
+        {{ method }}
+      </span>
+    </p>
+  </div>
+</div>

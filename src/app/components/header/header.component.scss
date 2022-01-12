@@ -1,0 +1,37 @@
+nav {
+  font-weight: 600;
+  background: linear-gradient(126.6deg, #1E1F25 28.69%, rgba(30, 31, 37, 0.5) 100%);
+  backdrop-filter: blur(140px);
+  position: fixed !important;
+  z-index: 666;
+  left: 0;
+  top: 0;
+  width: 100vw;
+
+  .planet {
+    width: 43px;
+  }
+  .dropdown-menu-dark {
+    background-color: #343a40;
+  }
+  .nav-link:hover {
+    color: var(--itpark) !important;
+  }
+  .dropdown-toggle {
+    text-transform: capitalize;
+  }
+}
+
+@media (max-width: 992px) {
+  button.navbar-toggler {
+    border-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  .navbar-collapse {
+    margin-top: 20px;
+  }
+  .nav-item {
+    margin-bottom: 10px;
+  }
+}

@@ -1,0 +1,114 @@
+<section class="content">
+  <div class="container text-black">
+    <div class="d-flex align-items-center block-header">
+      <div class="header-image">
+        <img *ngIf="pageId == 'english'" src="/assets/images/books.png" alt="english icon">
+        <img *ngIf="pageId == 'smm'" src="/assets/images/smm.png" alt="smm icon">
+        <img *ngIf="pageId == 'designVideo'" src="/assets/images/design.png" alt="designVideo icon">
+        <img *ngIf="pageId == 'computer'" src="/assets/images/compgram.png" alt="computer-literacy icon">
+        <img *ngIf="pageId == 'robotics'" src="/assets/images/rotech.png" alt="robotics icon">
+        <img *ngIf="pageId == 'programing'" src="/assets/images/programing.png" alt="programing icon">
+      </div>
+      <div class="header-content">
+        <h4>{{ pageId | translate }}</h4>
+        <p>
+          <button class="btn-itpark" type="button" data-bs-toggle="collapse" data-bs-target="#filter" aria-expanded="false" aria-controls="filter">
+            <svg width="16" height="19" viewBox="0 0 16 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M1 0C0.447715 0 0 0.447715 0 1V3.00001H16V1C16 0.447715 15.5523 0 15 0H1ZM15.7822 5.00001H0.217762C0.332096 5.22455 0.489071 5.42794 0.68299 5.59762L6.68299 10.8476C7.43704 11.5074 8.56296 11.5074 9.31701 10.8476L15.317 5.59762C15.5109 5.42794 15.6679 5.22455 15.7822 5.00001Z" fill="white"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M10 14.2639L10 8H6V16.2639L10 14.2639ZM10 18.7361L9.47214 19H10V18.7361Z" fill="white"/>
+            </svg>
+            <span class="px-2">{{ 'filter' | translate }}</span>
+          </button>
+        </p>
+      </div>
+    </div>
+    <div class="collapse" id="filter">
+      <div class="filter-params">
+        <div>
+          <p class="px-2 mb-2">{{ 'city' | translate }}</p>
+          <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <!-- To Properly translate city names -->
+              {{ filterParams.city ? ('cities.' + filterParams.city | translate) : ('all' | translate) }}
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a (click)="filterParams.city = 'tashkent'" class="dropdown-item">
+                {{ 'cities.tashkent' | translate }}
+              </a></li>
+              <li><a (click)="filterParams.city = 'bukhara'" class="dropdown-item">
+                {{ 'cities.bukhara' | translate }}
+              </a></li>
+              <li><a (click)="filterParams.city = 'fergana'" class="dropdown-item">
+                {{ 'cities.fergana' | translate }}
+              </a></li>
+              <li><a (click)="filterParams.city = 'namangan'" class="dropdown-item">
+                {{ 'cities.namangan' | translate }}
+              </a></li>
+              <li><a (click)="filterParams.city = 'khorezm'" class="dropdown-item">
+                {{ 'cities.khorezm' | translate }}
+              </a></li>
+              <li><a (click)="filterParams.city = 'all'" class="dropdown-item">
+                {{ 'all' | translate }}
+              </a></li>
+            </ul>
+          </div>
+        </div>
+        <button (click)="searchByFilter()" class="btn-itpark">{{ 'search' | translate }}</button>
+      </div>
+    </div>
+    <ng-container *ngIf="coursesInfo">
+      <div *ngFor="let resident of coursesInfo.residents" class="resident">
+        <div style="background-image: url('{{ resident.background }}')" class="resident-thumb">
+          <div class="d-flex align-items-center p-2">
+            <img src="{{ resident.logo }}" alt="{{ resident.title }}" class="logo">
+            <h3 class="ml-3 text-bold text-white">{{ resident.title }}</h3>
+          </div>
+          <div class="resident-content">
+            <div class="d-flex align-items-center">
+              <div class="d-flex align-items-center place">
+                <img src="/assets/icons/place.svg" alt="place icon">
+                <h4 class="mb-0 px-2">{{ 'cities.' + resident.city.toLowerCase() | translate }}</h4>
+              </div>
+              <div class="resident-line"></div>
+              <div class="resident-description">
+                <h5 class="text-white mb-3">{{ 'aboutCompany' | translate }}</h5>
+                <p class="text-white mb-1">{{ 'director' | translate }}: {{ resident.director[currentLang] }}</p>
+                <p class="text-white mb-1">{{ 'address' | translate }}: {{ resident.address[currentLang] }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-around resident-links">
+            <a
+                target="_blank"
+                *ngIf="resident.site && resident.site != 'null'"
+                href="{{ normalizeWebsiteUrl(resident.site) }}" class="btn-itpark"
+            >
+              {{ minifyWebsiteUrl(resident.site) }}
+            </a>
+            <a
+                *ngIf="resident.phone && resident.phone != 'null'"
+                class="btn-outline-itpark"
+                href="tel:{{ resident.phone }}"
+            >
+              {{ resident.phone }}
+            </a>
+            <a
+                *ngIf="resident.phone_tg && resident.phone_tg != 'null'"
+                class="btn-outline-itpark"
+                href="tel:{{ resident.phone_tg }}"
+            >
+              {{ resident.phone_tg }}
+            </a>
+          </div>
+        </div>
+        <div class="courses-block row">
+          <app-course
+              *ngFor="let course of resident.courses"
+              [courseInfo]="course"
+              class="col-md-6"
+          ></app-course>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</section>
