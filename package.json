@@ -24,6 +24,7 @@
     "@ngx-translate/http-loader": "^6.0.0",
     "bootstrap": "^4.6.1",
     "jquery": "^3.6.0",
+    "ng-yandex-metrika": "^2.2.1",
     "popper": "^1.0.1",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",

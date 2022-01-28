@@ -15,26 +15,45 @@
     </p>
   </div>
   <div class="d-flex align-items-start">
-    <img src="/assets/icons/duration.png" class="mx-2 mt-1" alt="duration icon">
+    <img src="/assets/icons/duration.png" class="mx-2 left-icon" alt="duration icon">
     <p>
       <span class="fw-bold">{{ 'duration' | translate }}: </span>
       {{ courseInfo.duration[currentLang] }}
     </p>
   </div>
   <div class="d-flex align-items-start">
-    <img src="/assets/icons/price.png" class="mx-2 mt-1" alt="price icon">
+    <img src="/assets/icons/price.png" class="mx-2 left-icon" alt="price icon">
     <p>
       <span class="fw-bold">{{ 'price' | translate }}: </span>
       {{ courseInfo.price[currentLang] }}
     </p>
   </div>
   <div class="d-flex align-items-start">
-    <img src="/assets/icons/methods.png" class="mx-2 mt-1" alt="method icon">
+    <img src="/assets/icons/methods.png" class="mx-2 left-icon" alt="method icon">
     <p>
       <span class="fw-bold">{{ 'method' | translate }}: </span>
       <span class="mx-1" *ngFor="let method of courseInfo.method">
         {{ method }}
       </span>
+    </p>
+  </div>
+
+  <div *ngIf="courseInfo.contact_name" class="d-flex align-items-start">
+    <img src="/assets/icons/person.png" class="mx-2 left-icon" alt="method icon">
+    <p>
+      <span class="mx-1">{{ courseInfo.contact_name }}</span>
+    </p>
+  </div>
+  <div *ngIf="courseInfo.contact_phone" class="d-flex align-items-start">
+    <img src="/assets/icons/phone.png" class="mx-2 left-icon" alt="method icon">
+    <p>
+      <a href="tel:{{courseInfo.contact_phone}}"class="mx-1">{{ courseInfo.contact_phone }}</a>
+    </p>
+  </div>
+  <div *ngIf="courseInfo.address" class="d-flex align-items-start">
+    <img src="/assets/icons/location.png" class="mx-2 left-icon" alt="method icon">
+    <p>
+      <span class="mx-1">{{ courseInfo.address }}</span>
     </p>
   </div>
 </div>

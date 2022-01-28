@@ -10,6 +10,7 @@ import { HeroComponent } from './components/hero/hero.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateLoader, TranslateModule, TranslateService} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import { MetrikaModule } from 'ng-yandex-metrika';
 
 const TranslateModuleConfigs = {
   loader: {
@@ -34,7 +35,8 @@ const TranslateModuleConfigs = {
     AppRoutingModule,
     CoursesModule,
     HttpClientModule,
-    TranslateModule.forRoot(TranslateModuleConfigs)
+    TranslateModule.forRoot(TranslateModuleConfigs),
+    MetrikaModule.forRoot( { id: 66561331, webvisor: true })
   ],
   providers: [
     TranslateService

@@ -1,6 +1,12 @@
 .course {
-  padding: 20px 10px;
+  padding: 27px 60px 27px 30px;
+  background-color: #F4F4F4;
+  border-radius: 10px;
+  height: 100%;
 
+  .left-icon {
+    margin-top: 2px;
+  }
   .skill {
     display: inline-block;
     background-color: var(--itpark);

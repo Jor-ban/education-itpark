@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
-import { Subject, Subscription } from "rxjs";
+import { ActivatedRoute } from "@angular/router";
+import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 import { CoursesService } from "./courses.service";
 import { TranslateService } from "@ngx-translate/core";
@@ -18,7 +18,10 @@ export class CoursesComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>()
   coursesInfo !: CourseInfoInterface;
   filterParams: any = {
-    city: '',
+    city: 'all',
+    form: 'both',
+    maxPrice: 'all',
+    duration: 0,
   }
 
   constructor(
@@ -46,8 +49,74 @@ export class CoursesComponent implements OnInit, OnDestroy {
   searchByFilter(): void {
     this.filterParams['direction'] = this.pageId
     this.coursesService.getCourseInfoByFilter(this.filterParams).pipe(takeUntil(this.destroy$)).subscribe(data => {
+      this.filterForm(data)
+      this.filterPrices(data)
+      this.filterDuration(data)
+      this.removeEmptyCourses(data)
       this.coursesInfo = data
     })
+  }
+  filterForm(data: CourseInfoInterface):void {
+    if(this.filterParams.form == 'both')
+      return;  // if no filter is needed
+
+    data.residents.forEach(resident => {
+      for(let i = 0; i < resident.courses.length; i++) {
+        const course = resident.courses[i]
+        if(!course.method.includes(this.filterParams.form)) {
+          resident.courses.splice(i--, 1)
+        }
+      }
+    })
+  }
+  filterPrices(data: CourseInfoInterface):void {
+    if(this.filterParams.maxPrice == 'all')
+      return;
+
+    data.residents.forEach(resident => {
+      for(let i = 0; i < resident.courses.length; i++) {
+        const course = resident.courses[i]
+        if(course.price.en == 'free') {
+          continue
+        }
+        // remove all characters from number string
+        const price = Number(course.price.en?.replace(/[^0-9]/g, ''))
+        const maxPrice = Number(this.filterParams.maxPrice.replace(/[^0-9]/g, ''))
+        if(price > maxPrice) {
+          resident.courses.splice(i--, 1)
+        } else {
+          console.log(price, maxPrice)
+        }
+      }
+    })
+  }
+  filterDuration(data: CourseInfoInterface):void {
+    if(this.filterParams.duration == 0)
+      return;
+
+    data.residents.forEach(resident => {
+      for(let i = 0; i < resident.courses.length; i++) {
+        const course = resident.courses[i]
+        if(course.duration.en?.includes("mon")) {
+          // in case people write unknown things
+          const duration = Number(course.duration.en.replace(/[^0-9]/g, '')) || 9999
+          if(duration > this.filterParams.duration) {
+            console.log(course.duration.en)
+            resident.courses.splice(i--, 1)
+          }
+        } else {
+          resident.courses.splice(i--, 1)
+        }
+      }
+    })
+  }
+  removeEmptyCourses(data: CourseInfoInterface):void {
+    for(let i = 0; i < data.residents.length; i++) {
+      const resident = data.residents[i]
+      if(resident.courses.length == 0) {
+        data.residents.splice(i--, 1)
+      }
+    }
   }
   minifyWebsiteUrl(url:string) :string {
     return url.replace(/^(?:https?:\/\/)?(?:www\.)?/i, '').split('/')[0]

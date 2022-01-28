@@ -22,6 +22,9 @@ body {
   background-color: var(--dark);
   color: var(--light);
 }
+.container {
+  max-width: 1000px;
+}
 .scroller-up-arrow.hidden {
   opacity: 0;
   bottom: -100px;

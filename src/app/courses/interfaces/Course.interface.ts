@@ -9,4 +9,7 @@ export interface CourseInterface {
   resident_id: number;
   skills: string;
   title: TranslatableInterface;
+  address: string | null;
+  contact_name: string | null;
+  contact_phone: string | null;
 }

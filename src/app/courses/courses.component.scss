@@ -5,20 +5,29 @@
   .container {
     background-color: white;
     border-radius: 20px;
-    padding: 70px 40px;
+    padding: 111px 63px;
     color: black;
 
     .block-header {
       margin-bottom: 50px;
 
       .header-content {
-        padding-left: 40px;
-        height: 120px;
+        padding-left: 75px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         h4 {
           font-weight: 800;
+          margin-bottom: 47px;
+        }
+        button {
+          padding: 12px 28px;
+          font-size: 14px;
+          border-radius: 25px;
+
+          svg {
+            margin: -5px 0;
+          }
         }
       }
     }
@@ -27,23 +36,36 @@
       display: flex;
       align-items: flex-end;
       flex-wrap: wrap;
-      justify-content: space-around;
-      margin-bottom: 30px;
+      justify-content: space-between;
+      margin-bottom: 38px;
+      margin-right: -20px;
 
-      button.dropdown-toggle {
-        border: 2px solid #7B7B7B;
-        color: #7B7B7B;
-        border-radius: 10px;
-        font-weight: 700;
-        width: 250px;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
+      .col {
+        padding-right: 20px;
+        margin-bottom: 30px;
+        min-width: 240px;
+
+        button.dropdown-toggle {
+          border: 2px solid #7B7B7B;
+          width: 100% !important;
+          color: #7B7B7B;
+          border-radius: 10px;
+          width: 100%;
+          font-weight: 700;
+          width: 250px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        li a {
+          font-weight: 600;
+        }
       }
     }
+    .search-btn {
+      margin-bottom: 67px !important;
+    }
     .resident {
-      padding: 10px;
-
       .resident-thumb {
         border-radius: 10px;
         background-size: cover;
@@ -85,6 +107,13 @@
           margin: 10px;
         }
       }
+      .courses-block {
+        margin: 19px -10px !important;
+
+        .col {
+          padding: 10px !important;
+        }
+      }
     }
   }
 }
@@ -99,6 +128,26 @@
     margin-top: -700px !important;
     .container {
       padding: 20px 10px;
+
+      .header-content {
+        padding: 10px 0 0 20px !important;
+
+        h4 {
+          margin-bottom: 20px !important;
+        }
+        button {
+          padding: 8px 18px !important;
+        }
+      }
+      .filter-params {
+        flex-direction: column !important;
+        align-items: center !important;
+        margin-right: 0 !important;
+        padding: 0 20px;
+      }
+      .search-btn {
+        justify-content: center !important;
+      }
     }
   }
 }

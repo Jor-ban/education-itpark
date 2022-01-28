@@ -24,12 +24,12 @@
     </div>
     <div class="collapse" id="filter">
       <div class="filter-params">
-        <div>
+        <div class="col col-xl-3">
           <p class="px-2 mb-2">{{ 'city' | translate }}</p>
           <div class="dropdown">
             <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               <!-- To Properly translate city names -->
-              {{ filterParams.city ? ('cities.' + filterParams.city | translate) : ('all' | translate) }}
+              {{ 'cities.' + filterParams.city | translate }}
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><a (click)="filterParams.city = 'tashkent'" class="dropdown-item">
@@ -53,6 +53,98 @@
             </ul>
           </div>
         </div>
+        <div class="col col-xl-3">
+          <p class="px-2 mb-2">{{ 'form' | translate }}</p>
+          <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <!-- To Properly translate city names -->
+              {{ 'educationForm.' + filterParams.form | translate }}
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a (click)="filterParams.form = 'online'" class="dropdown-item">
+                {{ 'educationForm.online' | translate }}
+              </a></li>
+              <li><a (click)="filterParams.form = 'offline'" class="dropdown-item">
+                {{ 'educationForm.offline' | translate }}
+              </a></li>
+              <li><a (click)="filterParams.form = 'both'" class="dropdown-item">
+                {{ 'educationForm.both' | translate }}
+              </a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col col-xl-3">
+          <p class="px-2 mb-2">{{ 'price' | translate }}</p>
+          <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <!-- To Properly translate city names -->
+              {{ filterParams.maxPrice | translate }}
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a (click)="filterParams.maxPrice = 'free'" class="dropdown-item">
+                {{ 'free' | translate }}
+              </a></li>
+              <li><a (click)="filterParams.maxPrice = '500 000'" class="dropdown-item">
+                {{ 'cheaperThan' | translate:{price: '500 000'} }}
+              </a></li>
+              <li><a (click)="filterParams.maxPrice = '1 000 000'" class="dropdown-item">
+                {{ 'cheaperThan' | translate:{price: '1 000 000'} }}
+              </a></li>
+              <li><a (click)="filterParams.maxPrice = '2 000 000'" class="dropdown-item">
+                {{ 'cheaperThan' | translate:{price: '2 000 000'} }}
+              </a></li>
+              <li><a (click)="filterParams.maxPrice = '3 000 000'" class="dropdown-item">
+                {{ 'cheaperThan' | translate:{price: '3 000 000'} }}
+              </a></li>
+              <li><a (click)="filterParams.maxPrice = '4 000 000'" class="dropdown-item">
+                {{ 'cheaperThan' | translate:{price: '4 000 000'} }}
+              </a></li>
+              <li><a (click)="filterParams.maxPrice = '5 000 000'" class="dropdown-item">
+                {{ 'cheaperThan' | translate:{price: '5 000 000'} }}
+              </a></li>
+              <li><a (click)="filterParams.maxPrice = '6 000 000'" class="dropdown-item">
+                {{ 'cheaperThan' | translate:{price: '6 000 000'} }}
+              </a></li>
+              <li><a (click)="filterParams.maxPrice = 'all'" class="dropdown-item">
+                {{ 'all' | translate }}
+              </a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col col-xl-3">
+          <p class="px-2 mb-2">{{ 'duration' | translate }}</p>
+          <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <!-- To Properly translate city names -->
+              {{ filterParams.duration != 0 ?
+                  '< ' + filterParams.duration + ('months' | translate)
+                  : 'all' | translate
+              }}
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a (click)="filterParams.duration = 2" class="dropdown-item">
+                {{ '< ' + 2 + ('months' | translate) }}
+              </a></li>
+              <li><a (click)="filterParams.duration = 4" class="dropdown-item">
+                {{ '< ' + 4 + ('months' | translate) }}
+              </a></li>
+              <li><a (click)="filterParams.duration = 6" class="dropdown-item">
+                {{ '< ' + 6 + ('months' | translate) }}
+              </a></li>
+              <li><a (click)="filterParams.duration = 8" class="dropdown-item">
+                {{ '< ' + 8 + ('months' | translate) }}
+              </a></li>
+              <li><a (click)="filterParams.duration = 12" class="dropdown-item">
+                {{ '< ' + 12 + ('months' | translate) }}
+              </a></li>
+              <li><a (click)="filterParams.duration = 0" class="dropdown-item">
+                {{ 'all' | translate }}
+              </a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end search-btn">
         <button (click)="searchByFilter()" class="btn-itpark">{{ 'search' | translate }}</button>
       </div>
     </div>
@@ -72,7 +164,7 @@
               <div class="resident-line"></div>
               <div class="resident-description">
                 <h5 class="text-white mb-3">{{ 'aboutCompany' | translate }}</h5>
-                <p class="text-white mb-1">{{ 'director' | translate }}: {{ resident.director[currentLang] }}</p>
+                <p *ngIf="resident.director?.[currentLang]" class="text-white mb-1">{{ 'director' | translate }}: {{ resident.director[currentLang] }}</p>
                 <p class="text-white mb-1">{{ 'address' | translate }}: {{ resident.address[currentLang] }}</p>
               </div>
             </div>
@@ -105,7 +197,7 @@
           <app-course
               *ngFor="let course of resident.courses"
               [courseInfo]="course"
-              class="col-md-6"
+              class="col col-12 col-md-12 col-lg-6"
           ></app-course>
         </div>
       </div>
